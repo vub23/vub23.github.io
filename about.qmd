@@ -2,4 +2,4 @@
 title: "About"
 ---
 
-Binh Vu's website. Evan love
+Binh Vu's about section. Evan love

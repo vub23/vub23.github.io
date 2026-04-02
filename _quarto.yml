@@ -3,12 +3,13 @@ project:
   output-dir: docs
 
 website:
-  title: "vub23.github.io"
+  title: "Binh Vu"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - things.qmd
 
 format:
   html:

@@ -1,9 +1,7 @@
 ---
-title: "vub23.github.io"
+title: "Hello"
 ---
 
-Binh Vu
-
-like the (bad) search engine. senior at Lawrence University.
+Binh Vu (pronounced like the (bad) search engine). senior at Lawrence University, will probably be in grad school soon.
 
 Currently studying some things. David Gerard MYGOAT

@@ -2,15 +2,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "vub23.github.io",
+    "title": "Hello",
     "section": "",
-    "text": "Binh Vu\nlike the (bad) search engine. senior at Lawrence University.\nCurrently studying some things. David Gerard MYGOAT"
+    "text": "Binh Vu (pronounced like the (bad) search engine). senior at Lawrence University, will probably be in grad school soon.\nCurrently studying some things. David Gerard MYGOAT"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Binh Vu’s website. Evan love"
+    "text": "Binh Vu’s about section. Evan love"
+  },
+  {
+    "objectID": "things.html",
+    "href": "things.html",
+    "title": "Things",
+    "section": "",
+    "text": "Things I like:\n\nCoffee\nFree markets\nSocial welfare\nMilton Friedman\nJustin Herbert\nQuarto\nLife\n\nThings I dislike:\n\nMy evil twin Bihn"
   }
 ]
