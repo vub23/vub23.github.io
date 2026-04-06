@@ -10,14 +10,35 @@ website:
         text: Home
       - about.qmd
       - things.qmd
-      - text: learning
-        menu:
-        - href: numana.qmd
-          text: Numerical Analysis
-        - href: regress.qmd
-          text: Modern Regression
-        - href: datacomp.qmd
-          text: Adv. Data Computing
+      - href: projects/index.qmd
+        text: Projects
+      - href: learning/index.qmd
+        text: Learning
+
+  sidebar:
+    - id: learning
+      style: docked
+      collapse-level: 1
+      contents:
+        - learning/index.qmd
+        - section: "Numerical Analysis"
+          href: learning/numana/index.qmd
+          contents:
+            - learning/numana/w1.qmd
+            - learning/numana/w2.qmd
+            - learning/numana/w3.qmd
+        - section: "Regression Analysis"
+          href: learning/regress/index.qmd
+          contents:
+            - learning/regress/w1.qmd
+            - learning/regress/w2.qmd
+            - learning/regress/w3.qmd
+        - section: "Adv. Data Computing"
+          href: learning/datacomp/index.qmd
+          contents:
+            - learning/datacomp/w1.qmd
+            - learning/datacomp/w2.qmd
+            - learning/datacomp/w3.qmd
 
 format:
   html:
@@ -28,5 +49,4 @@ format:
     filters:
       - quarto-ext/fontawesome
     toc: true
-
 

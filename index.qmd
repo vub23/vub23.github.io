@@ -1,14 +1,17 @@
 ---
-title: "Hello"
+title: "Hello!"
 ---
 
-Binh Vu (pronounced like the (bad) search engine). senior at [Lawrence University](https://www.lawrence.edu/), will probably be in grad school soon.
+Binh Vu (pronounced like the ~bad~ search engine). Senior majoring in Economics and Statistics at [Lawrence University](https://www.lawrence.edu/), will probably be in grad school soon.
 
-[About](about.qmd) has a little more history about me, and [Things](things.qmd) reveal my impeccable taste.
+[About](about.qmd) has a little more about me, and [Things](things.qmd) reveal my impeccable weltanschauung.
 
-Currently taking: [Modern Regression](regress.qmd), [Advanced Data Computing](datacomp.qmd), and [Numerical Analysis](numana.qmd).
+Currently taking: [Regression Analysis](learning/regress/index.qmd), [Advanced Data Computing](learning/datacomp/index.qmd), and [Numerical Analysis](learning/numana/index.qmd). Past work can be accessed via [Projects](/projects/index.qmd).
+
+Reach out!
 
 ::: {.contact-links}
 [{{< fa envelope >}}](mailto:vub@lawrence.edu)
 [{{< fa brands linkedin >}}](https://www.linkedin.com/in/vub23/)
+[{{< fa brands github >}}](https://www.github.com/vub23/)
 :::

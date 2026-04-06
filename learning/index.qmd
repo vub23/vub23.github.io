@@ -1,0 +1,9 @@
+---
+title: "Learning"
+---
+
+This page collects the classes and course work currently linked from the site.
+
+- [Regression Analysis](regress.qmd)
+- [Advanced Data Computing](datacomp.qmd)
+- [Numerical Analysis](numana.qmd)

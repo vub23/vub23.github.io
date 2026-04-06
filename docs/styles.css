@@ -1,5 +1,6 @@
 /* css styles */
 
+
 a {
   color: #0d6efd;
   text-decoration: none;
@@ -27,4 +28,5 @@ a:active {
   align-items: center;
   display: inline-flex;
   gap: 0.45rem;
+  font-size: 1.2rem;
 }

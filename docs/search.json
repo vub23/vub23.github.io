@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Hello",
+    "title": "Hello!",
     "section": "",
-    "text": "Binh Vu (pronounced like the (bad) search engine). senior at Lawrence University, will probably be in grad school soon.\nAbout has a little more history about me, and Things reveal my impeccable taste.\nCurrently taking: Modern Regression, Advanced Data Computing, and Numerical Analysis."
+    "text": "Binh Vu (pronounced like the bad search engine). Senior majoring in Economics and Statistics at Lawrence University, will probably be in grad school soon.\nAbout has a little more about me, and Things reveal my impeccable weltanschauung.\nCurrently taking: Regression Analysis, Advanced Data Computing, and Numerical Analysis. Past work can be accessed via Projects.\nReach out!"
   },
   {
     "objectID": "about.html",
@@ -25,20 +25,308 @@
     "href": "regress.html",
     "title": "Math 591 - Regressions & More",
     "section": "",
-    "text": "A directed study under Woden Kusner (MYGOAT), hugely inspired by materials found in Modern Regression, a statistics course taught at CMU. Other sources will be added as we get deeper into the weeds.\nMight be the second-most frequently updated page this term. Will be uploading my handwritten notes to the website (at least). Maybe a writeup near the end of the term, but no promises."
+    "text": "A directed study under Woden Kusner (MYGOAT), hugely inspired by materials found in Modern Regression, a statistics course taught at CMU. Other sources will be added as we get deeper into the weeds.\nMight be the second-most frequently updated page this term. Will be uploading my handwritten notes to the website (at least). Maybe a writeup near the end of the term, but no promises.",
+    "crumbs": [
+      "Learning",
+      "Modern Regression"
+    ]
   },
   {
     "objectID": "datacomp.html",
     "href": "datacomp.html",
     "title": "Stat 405 - Advanced Data Computing",
     "section": "",
-    "text": "Taught by the great Abhishek Chakraborty. This file will be updated with links to projects, classwork, presentations and more. Maybe not to the point of a personal portfolio, but close enough to matter."
+    "text": "Taught by the great Abhishek Chakraborty. This file will be updated with links to projects, classwork, presentations and more. Maybe not to the point of a personal portfolio, but close enough to matter.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing"
+    ]
   },
   {
     "objectID": "numana.html",
     "href": "numana.html",
     "title": "Math 420 - Numerical Analysis",
     "section": "",
-    "text": "Semi official document for Numerical Analysis, taught by the ever-calm Joe Gregg. Not sure how much I’ll actually use this file, given they are Jupyter.\nIf the need overtakes me, will maybe do some scribing."
+    "text": "Semi official document for Numerical Analysis, taught by the ever-calm Joe Gregg. Not sure how much I’ll actually use this file, given they are Jupyter.\nIf the need overtakes me, will maybe do some scribing.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis"
+    ]
+  },
+  {
+    "objectID": "learning.html",
+    "href": "learning.html",
+    "title": "Learning",
+    "section": "",
+    "text": "This page collects the classes and course work currently linked from the site.\n\nRegression Analysis\nAdvanced Data Computing\nNumerical Analysis",
+    "crumbs": [
+      "Learning"
+    ]
+  },
+  {
+    "objectID": "regress-w3.html",
+    "href": "regress-w3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "Dummy content for Modern Regression Week 3.",
+    "crumbs": [
+      "Learning",
+      "Modern Regression",
+      "Week 3"
+    ]
+  },
+  {
+    "objectID": "regress-w1.html",
+    "href": "regress-w1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Dummy content for Modern Regression Week 1.",
+    "crumbs": [
+      "Learning",
+      "Modern Regression",
+      "Week 1"
+    ]
+  },
+  {
+    "objectID": "numana-w2.html",
+    "href": "numana-w2.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "Dummy content for Numerical Analysis Week 2.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis",
+      "Week 2"
+    ]
+  },
+  {
+    "objectID": "datacomp-w3.html",
+    "href": "datacomp-w3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "Dummy content for Adv. Data Computing Week 3.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing",
+      "Week 3"
+    ]
+  },
+  {
+    "objectID": "datacomp-w1.html",
+    "href": "datacomp-w1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Dummy content for Adv. Data Computing Week 1.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing",
+      "Week 1"
+    ]
+  },
+  {
+    "objectID": "datacomp-w2.html",
+    "href": "datacomp-w2.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "Dummy content for Adv. Data Computing Week 2.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing",
+      "Week 2"
+    ]
+  },
+  {
+    "objectID": "numana-w1.html",
+    "href": "numana-w1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Dummy content for Numerical Analysis Week 1.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis",
+      "Week 1"
+    ]
+  },
+  {
+    "objectID": "numana-w3.html",
+    "href": "numana-w3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "Dummy content for Numerical Analysis Week 3.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis",
+      "Week 3"
+    ]
+  },
+  {
+    "objectID": "regress-w2.html",
+    "href": "regress-w2.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "Dummy content for Modern Regression Week 2.",
+    "crumbs": [
+      "Learning",
+      "Modern Regression",
+      "Week 2"
+    ]
+  },
+  {
+    "objectID": "learning/regress/w3.html",
+    "href": "learning/regress/w3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "Dummy content for Modern Regression Week 3.",
+    "crumbs": [
+      "Learning",
+      "Modern Regression",
+      "Week 3"
+    ]
+  },
+  {
+    "objectID": "learning/regress/w1.html",
+    "href": "learning/regress/w1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Dummy content for Modern Regression Week 1.",
+    "crumbs": [
+      "Learning",
+      "Modern Regression",
+      "Week 1"
+    ]
+  },
+  {
+    "objectID": "learning/numana/w3.html",
+    "href": "learning/numana/w3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "Dummy content for Numerical Analysis Week 3.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis",
+      "Week 3"
+    ]
+  },
+  {
+    "objectID": "learning/numana/w1.html",
+    "href": "learning/numana/w1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Dummy content for Numerical Analysis Week 1.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis",
+      "Week 1"
+    ]
+  },
+  {
+    "objectID": "learning/index.html",
+    "href": "learning/index.html",
+    "title": "Learning",
+    "section": "",
+    "text": "This page collects the classes and course work currently linked from the site.\n\nRegression Analysis\nAdvanced Data Computing\nNumerical Analysis",
+    "crumbs": [
+      "Learning"
+    ]
+  },
+  {
+    "objectID": "learning/datacomp/w2.html",
+    "href": "learning/datacomp/w2.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "Dummy content for Adv. Data Computing Week 2.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing",
+      "Week 2"
+    ]
+  },
+  {
+    "objectID": "learning/datacomp/index.html",
+    "href": "learning/datacomp/index.html",
+    "title": "Stat 405 - Advanced Data Computing",
+    "section": "",
+    "text": "Taught by the great Abhishek Chakraborty. This file will be updated with links to projects, classwork, presentations and more. Maybe not to the point of a personal portfolio, but close enough to matter.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing"
+    ]
+  },
+  {
+    "objectID": "learning/datacomp/w1.html",
+    "href": "learning/datacomp/w1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Dummy content for Adv. Data Computing Week 1.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing",
+      "Week 1"
+    ]
+  },
+  {
+    "objectID": "learning/datacomp/w3.html",
+    "href": "learning/datacomp/w3.html",
+    "title": "Week 3",
+    "section": "",
+    "text": "Dummy content for Adv. Data Computing Week 3.",
+    "crumbs": [
+      "Learning",
+      "Adv. Data Computing",
+      "Week 3"
+    ]
+  },
+  {
+    "objectID": "learning/numana/index.html",
+    "href": "learning/numana/index.html",
+    "title": "Math 420 - Numerical Analysis",
+    "section": "",
+    "text": "Semi official document for Numerical Analysis, taught by the ever-calm Joe Gregg. Not sure how much I’ll actually use this file, given they are Jupyter.\nIf the need overtakes me, will maybe do some scribing.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis"
+    ]
+  },
+  {
+    "objectID": "learning/numana/w2.html",
+    "href": "learning/numana/w2.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "Dummy content for Numerical Analysis Week 2.",
+    "crumbs": [
+      "Learning",
+      "Numerical Analysis",
+      "Week 2"
+    ]
+  },
+  {
+    "objectID": "learning/regress/index.html",
+    "href": "learning/regress/index.html",
+    "title": "Math 591 - Regressions & More",
+    "section": "",
+    "text": "A directed study under Woden Kusner (MYGOAT), hugely inspired by materials found in Modern Regression, a statistics course taught at CMU. Other sources will be added as we get deeper into the weeds.\nMight be the second-most frequently updated page this term. Will be uploading my handwritten notes to the website (at least). Maybe a writeup near the end of the term, but no promises.",
+    "crumbs": [
+      "Learning",
+      "Regression Analysis"
+    ]
+  },
+  {
+    "objectID": "learning/regress/w2.html",
+    "href": "learning/regress/w2.html",
+    "title": "Week 2",
+    "section": "",
+    "text": "Dummy content for Modern Regression Week 2.",
+    "crumbs": [
+      "Learning",
+      "Modern Regression",
+      "Week 2"
+    ]
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "A few things I’ve worked on."
   }
 ]
