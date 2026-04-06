@@ -2,6 +2,13 @@
 title: "Hello"
 ---
 
-Binh Vu (pronounced like the (bad) search engine). senior at Lawrence University, will probably be in grad school soon.
+Binh Vu (pronounced like the (bad) search engine). senior at [Lawrence University](https://www.lawrence.edu/), will probably be in grad school soon.
 
-Currently studying some things. David Gerard MYGOAT
+[About](about.qmd) has a little more history about me, and [Things](things.qmd) reveal my impeccable taste.
+
+Currently taking: [Modern Regression](regress.qmd), [Advanced Data Computing](datacomp.qmd), and [Numerical Analysis](numana.qmd).
+
+::: {.contact-links}
+[{{< fa envelope >}}](mailto:vub@lawrence.edu)
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/vub23/)
+:::

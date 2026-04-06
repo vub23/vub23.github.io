@@ -1,0 +1,6 @@
+---
+title: Math 420 - Numerical Analysis
+---
+Semi official document for Numerical Analysis, taught by the ever-calm Joe Gregg. Not sure how much I'll actually use this file, given they are Jupyter.
+
+If the need overtakes me, will maybe do some scribing.

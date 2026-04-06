@@ -10,6 +10,14 @@ website:
         text: Home
       - about.qmd
       - things.qmd
+      - text: learning
+        menu:
+        - href: numana.qmd
+          text: Numerical Analysis
+        - href: regress.qmd
+          text: Modern Regression
+        - href: datacomp.qmd
+          text: Adv. Data Computing
 
 format:
   html:
@@ -17,7 +25,8 @@ format:
       - cosmo
       - brand
     css: styles.css
+    filters:
+      - quarto-ext/fontawesome
     toc: true
-
 
 

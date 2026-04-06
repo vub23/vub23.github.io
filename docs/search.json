@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Hello",
     "section": "",
-    "text": "Binh Vu (pronounced like the (bad) search engine). senior at Lawrence University, will probably be in grad school soon.\nCurrently studying some things. David Gerard MYGOAT"
+    "text": "Binh Vu (pronounced like the (bad) search engine). senior at Lawrence University, will probably be in grad school soon.\nAbout has a little more history about me, and Things reveal my impeccable taste.\nCurrently taking: Modern Regression, Advanced Data Computing, and Numerical Analysis."
   },
   {
     "objectID": "about.html",
@@ -18,6 +18,27 @@
     "href": "things.html",
     "title": "Things",
     "section": "",
-    "text": "Things I like:\n\nCoffee\nFree markets\nSocial welfare\nMilton Friedman\nJustin Herbert\nQuarto\nLife\n\nThings I dislike:\n\nMy evil twin Bihn"
+    "text": "Things I like:\n\nCoffee\nGlobalization & Free markets\nThat one part in Nimrodel\nMarc-Andre Hamelin\nBTN Overhead Press\nQuarto (esp. labels)\n\nThings I dislike:\n\nMy evil twin Bihn"
+  },
+  {
+    "objectID": "regress.html",
+    "href": "regress.html",
+    "title": "Math 591 - Regressions & More",
+    "section": "",
+    "text": "A directed study under Woden Kusner (MYGOAT), hugely inspired by materials found in Modern Regression, a statistics course taught at CMU. Other sources will be added as we get deeper into the weeds.\nMight be the second-most frequently updated page this term. Will be uploading my handwritten notes to the website (at least). Maybe a writeup near the end of the term, but no promises."
+  },
+  {
+    "objectID": "datacomp.html",
+    "href": "datacomp.html",
+    "title": "Stat 405 - Advanced Data Computing",
+    "section": "",
+    "text": "Taught by the great Abhishek Chakraborty. This file will be updated with links to projects, classwork, presentations and more. Maybe not to the point of a personal portfolio, but close enough to matter."
+  },
+  {
+    "objectID": "numana.html",
+    "href": "numana.html",
+    "title": "Math 420 - Numerical Analysis",
+    "section": "",
+    "text": "Semi official document for Numerical Analysis, taught by the ever-calm Joe Gregg. Not sure how much I’ll actually use this file, given they are Jupyter.\nIf the need overtakes me, will maybe do some scribing."
   }
 ]

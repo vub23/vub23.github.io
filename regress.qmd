@@ -1,0 +1,7 @@
+---
+title: Math 591 - Regressions & More
+---
+
+A directed study under Woden Kusner (MYGOAT), hugely inspired by materials found in [Modern Regression](https://www.stat.cmu.edu/~larry/=stat401/), a statistics course taught at CMU. Other sources will be added as we get deeper into the weeds.
+
+Might be the second-most frequently updated page this term. Will be uploading my handwritten notes to the website (at least). Maybe a writeup near the end of the term, but no promises.
