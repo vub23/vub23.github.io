@@ -1,0 +1,377 @@
+---
+title: "Simple Linear Regression Before MLR"
+subtitle: "Estimation, noise, and exact sampling results"
+execute:
+  echo: false
+---
+
+## Modeling a Relationship
+
+In a regression problem, we usually begin with a question about a relationship. We have a response variable, a predictor, and a proposed functional form for how the average response changes with the predictor. In simple linear regression, the chosen form is a line:
+$$
+m(x)=\beta_0+\beta_1x.
+$$
+The **parameters** $\beta_0$ and $\beta_1$ are fixed but unknown once the model is chosen. The data do not make the parameters random; the data give us a way to estimate them.
+
+The model for the response is
+$$
+Y_i=\beta_0+\beta_1x_i+\epsilon_i,\qquad i=1,\ldots,n.
+$$
+The observed predictor values $x_1,\ldots,x_n$ are treated as fixed numbers in the derivations. The response $Y_i$ is capitalized because it is a **random variable** before observation. After observing the data, its realized value is $y_i$. Some course materials write the predictors as $X_i$; the algebra below is the fixed-$x$ version of the same calculations.
+
+The term $\epsilon_i$ is the **noise term**:
+$$
+\epsilon_i=Y_i-(\beta_0+\beta_1x_i).
+$$
+It is the part of the response not explained by the line. At first, assume
+$$
+E[\epsilon_i]=0,\qquad \operatorname{Var}(\epsilon_i)=\sigma^2,
+$$
+and assume the $\epsilon_i$ are uncorrelated across observations. The parameter $\sigma^2$ is the noise variance around the line, and it is also fixed but unknown.
+
+A **sample** is one realized set of observations. An **estimator** is a rule computed from random data, so it is random before the data are observed. An **estimate** is the realized value of that rule after one sample is observed. Hats mark estimators and estimates:
+$$
+\hat\beta_0,\qquad \hat\beta_1,\qquad \hat\sigma^2.
+$$
+The fitted mean at a point $x$ is
+$$
+\hat m(x)=\hat\beta_0+\hat\beta_1x,
+$$
+which estimates $m(x)=\beta_0+\beta_1x$.
+
+The main mathematical device is repeated sampling. We may not be able to rerun the study many times, but the model lets us ask what would happen to $\hat\beta_0$, $\hat\beta_1$, and $\hat m(x)$ across repeated samples with the same $x_i$ values. The distribution of an estimator over those hypothetical repetitions is its **sampling distribution**. Moments of that distribution tell us whether the estimator is centered near its target and how much it varies; the full distribution supports confidence intervals, tests, and prediction intervals.
+
+## Point Estimation
+
+Define
+$$
+\bar x=\frac1n\sum_{i=1}^n x_i,\qquad
+\bar Y=\frac1n\sum_{i=1}^n Y_i,
+$$
+$$
+s_X^2=\frac1n\sum_{i=1}^n (x_i-\bar x)^2,\qquad
+c_{XY}=\frac1n\sum_{i=1}^n (x_i-\bar x)(Y_i-\bar Y).
+$$
+The usual least-squares estimates are
+$$
+\hat\beta_1=\frac{c_{XY}}{s_X^2},\qquad
+\hat\beta_0=\bar Y-\hat\beta_1\bar x.
+$$
+
+These formulas can be reached in two ways before adding Gaussian noise. The plug-in route starts from the optimal linear predictor, whose population slope is $\operatorname{Cov}(X,Y)/\operatorname{Var}(X)$, and replaces population quantities with sample quantities. The least-squares route chooses $b_0,b_1$ to minimize
+$$
+\frac1n\sum_{i=1}^n\{Y_i-(b_0+b_1x_i)\}^2.
+$$
+Taking derivatives gives the normal equations, and solving those equations gives the same $\hat\beta_0$ and $\hat\beta_1$.
+
+For large samples, we want estimates that move toward the true parameter values. **Consistency** means an estimator converges to its target as $n$ grows. **Bias** and **standard error** describe finite-sample behavior:
+$$
+\operatorname{Bias}(\hat\theta)=E[\hat\theta]-\theta,\qquad
+\operatorname{se}(\hat\theta)=\sqrt{\operatorname{Var}(\hat\theta)}.
+$$
+Bias records whether the estimator is centered at the target. Standard error records its typical sampling variation.
+
+## Arithmetic and Decompositions
+
+Let $a$ and $b$ be constants, and let $U$ be a random variable. Then
+$$
+E[a+bU]=a+bE[U],
+\qquad
+\operatorname{Var}(a+bU)=b^2\operatorname{Var}(U).
+$$
+Constants shift expectation, not variance; multiplying a random variable by $b$ multiplies its variance by $b^2$. If $V_1,\ldots,V_n$ are uncorrelated random variables and $a_1,\ldots,a_n$ are constants, then
+$$
+\operatorname{Var}\left(\sum_{i=1}^n a_iV_i\right)
+=\sum_{i=1}^n a_i^2\operatorname{Var}(V_i).
+$$
+
+Start with
+$$
+\hat\beta_1
+=\frac{c_{XY}}{s_X^2}
+=\frac{\frac1n\sum_{i=1}^n(x_i-\bar x)(Y_i-\bar Y)}{s_X^2}.
+$$
+Because $\sum_i(x_i-\bar x)=0$,
+$$
+\frac1n\sum_{i=1}^n(x_i-\bar x)\bar Y=0,
+$$
+so
+$$
+\hat\beta_1
+=\frac{\frac1n\sum_{i=1}^n(x_i-\bar x)Y_i}{s_X^2}.
+$$
+Substitute $Y_i=\beta_0+\beta_1x_i+\epsilon_i$:
+$$
+\hat\beta_1
+=\frac{\frac1n\sum_i(x_i-\bar x)(\beta_0+\beta_1x_i+\epsilon_i)}{s_X^2}.
+$$
+Split the sum:
+$$
+\hat\beta_1
+=
+\frac{
+\beta_0\frac1n\sum_i(x_i-\bar x)
++\beta_1\frac1n\sum_i(x_i-\bar x)x_i
++\frac1n\sum_i(x_i-\bar x)\epsilon_i
+}{s_X^2}.
+$$
+The first term is zero. For the second term,
+$$
+\frac1n\sum_i(x_i-\bar x)x_i
+=\frac1n\sum_i(x_i-\bar x)\{(x_i-\bar x)+\bar x\}
+=s_X^2.
+$$
+
+**Key result.** The slope estimator can be written as the true slope plus a sum of noise terms:
+$$
+\hat\beta_1
+=
+\beta_1
++
+\sum_{j=1}^n
+\frac{x_j-\bar x}{n s_X^2}\epsilon_j.
+$$
+This is the main calculation. Once $\hat\beta_1$ is written this way, its expectation and variance follow from the rules above:
+$$
+E[\hat\beta_1]
+=\beta_1+
+\sum_{j=1}^n
+\frac{x_j-\bar x}{n s_X^2}E[\epsilon_j]
+=\beta_1,
+$$
+so $\hat\beta_1$ is centered at the target under the basic SLR assumptions. Similarly,
+$$
+\operatorname{Var}(\hat\beta_1)
+=
+\sum_{j=1}^n
+\left(\frac{x_j-\bar x}{n s_X^2}\right)^2\sigma^2
+=
+\frac{\sigma^2}{n s_X^2}.
+$$
+Thus
+$$
+\operatorname{se}(\hat\beta_1)=\frac{\sigma}{\sqrt{n s_X^2}}.
+$$
+
+The same decomposition strategy gives the intercept and fitted mean.
+
+**Key result.**
+$$
+\hat\beta_0
+=
+\beta_0
++
+\sum_{j=1}^n
+\left(
+\frac1n
+-
+\frac{\bar x(x_j-\bar x)}{n s_X^2}
+\right)\epsilon_j.
+$$
+
+**Key result.**
+$$
+\hat m(x)
+=
+m(x)
++
+\sum_{j=1}^n
+\left(
+\frac1n
++
+\frac{(x-\bar x)(x_j-\bar x)}{n s_X^2}
+\right)\epsilon_j.
+$$
+From these,
+$$
+E[\hat\beta_0]=\beta_0,\qquad
+\operatorname{Var}(\hat\beta_0)
+=\frac{\sigma^2}{n}\left(1+\frac{\bar x^2}{s_X^2}\right),
+$$
+and
+$$
+E[\hat m(x)]=m(x),
+\qquad
+\operatorname{Var}(\hat m(x))
+=
+\frac{\sigma^2}{n}
+\left(
+1+\frac{(x-\bar x)^2}{s_X^2}
+\right).
+$$
+The variance of $\hat m(x)$ separates uncertainty about the level of the fitted line from uncertainty about the slope used away from $\bar x$.
+
+## Residuals and Estimating Noise
+
+The model noise $\epsilon_i$ uses the true line, so it is not observed. The **residual** uses the fitted line:
+$$
+e_i=Y_i-\hat m(x_i)=Y_i-(\hat\beta_0+\hat\beta_1x_i).
+$$
+After observing the data, the realized residual is $y_i-\hat m(x_i)$. Residuals are functions of the whole fitted model. They are related to the original noise terms, but they are not the same objects and they do not behave like independent copies of $\epsilon_i$.
+
+The sum of squared errors is
+$$
+SSE=\sum_{i=1}^n e_i^2.
+$$
+Under the fitted SLR model, the residuals satisfy two fitting constraints: they sum to zero and they are uncorrelated with the fitted predictor direction. Estimating two coefficients leaves $n-2$ residual degrees of freedom.
+
+The maximum-likelihood estimate of $\sigma^2$ under Gaussian noise is
+$$
+\hat\sigma^2=\frac{SSE}{n}.
+$$
+But this estimator is biased downward:
+$$
+E[\hat\sigma^2]=\frac{n-2}{n}\sigma^2.
+$$
+The corrected estimate used for standard errors is therefore
+$$
+s^2=\frac{SSE}{n-2}.
+$$
+
+## Adding Gaussian Noise
+
+The **Gaussian noise model** adds
+$$
+\epsilon_i \overset{ind}{\sim} N(0,\sigma^2).
+$$
+For fixed $x_i$, adding $\beta_0+\beta_1x_i$ shifts the mean and leaves the variance unchanged:
+$$
+Y_i \sim N(\beta_0+\beta_1x_i,\sigma^2).
+$$
+Independence of the $\epsilon_i$ gives independence of the corresponding $Y_i$ values.
+
+Under the basic SLR assumptions, the decompositions above gave means and variances. Under Gaussian noise, they give exact sampling distributions, because linear combinations of independent Gaussian random variables are Gaussian.
+
+**Key result.**
+$$
+\hat\beta_1
+\sim
+N\left(
+\beta_1,
+\frac{\sigma^2}{n s_X^2}
+\right).
+$$
+Similarly,
+$$
+\hat\beta_0
+\sim
+N\left(
+\beta_0,
+\frac{\sigma^2}{n}\left(1+\frac{\bar x^2}{s_X^2}\right)
+\right),
+$$
+and
+$$
+\hat m(x)
+\sim
+N\left(
+m(x),
+\frac{\sigma^2}{n}
+\left(
+1+\frac{(x-\bar x)^2}{s_X^2}
+\right)
+\right).
+$$
+
+If $\sigma$ were known, the slope could be standardized as
+$$
+\frac{\hat\beta_1-\beta_1}{\sigma/\sqrt{n s_X^2}}
+\sim N(0,1).
+$$
+In practice $\sigma$ is unknown, so it is estimated from residuals. Under Gaussian noise,
+$$
+\frac{SSE}{\sigma^2}
+=
+\frac{(n-2)s^2}{\sigma^2}
+\sim
+\chi^2_{n-2}.
+$$
+The chi-square distribution appears because, after the fitted line is accounted for, the residual sum of squares is a sum of squared Gaussian pieces.
+
+Replacing $\sigma$ with $s$ changes the standardized normal statistic into a $t$ statistic:
+$$
+\frac{\hat\beta_1-\beta_1}{\widehat{se}(\hat\beta_1)}
+\sim
+t_{n-2},
+$$
+where
+$$
+\widehat{se}(\hat\beta_1)=\frac{s}{\sqrt{n s_X^2}}.
+$$
+The same pattern applies to $\hat\beta_0$ and $\hat m(x)$ with their own estimated standard errors:
+$$
+\widehat{se}(\hat\beta_0)
+=
+\frac{s}{\sqrt n}
+\sqrt{1+\frac{\bar x^2}{s_X^2}},
+$$
+$$
+\widehat{se}(\hat m(x))
+=
+\frac{s}{\sqrt n}
+\sqrt{1+\frac{(x-\bar x)^2}{s_X^2}}.
+$$
+The $t$ distribution accounts for estimating $\sigma$. As the degrees of freedom grow, the $t$ distribution approaches the standard normal distribution.
+
+Under the Gaussian model, maximum likelihood gives the same $\hat\beta_0$ and $\hat\beta_1$ as least squares. Maximizing the Gaussian log-likelihood over the line parameters is equivalent to minimizing $SSE$.
+
+## Confidence Intervals, Tests, and Prediction
+
+The previous section gives reference distributions that no longer contain the unknown parameters in the same unusable way. That is what makes exact inference possible under the Gaussian assumptions.
+
+Let $t^\star$ be the two-sided cutoff from a $t_{n-2}$ distribution for the desired confidence level. For example, for a 95% interval, $t^\star$ is the value leaving 2.5% in each tail.
+
+The confidence interval template is
+$$
+\text{estimate} \pm t^\star \times \text{estimated standard error}.
+$$
+For the slope,
+$$
+\hat\beta_1\pm t^\star\widehat{se}(\hat\beta_1).
+$$
+For the intercept,
+$$
+\hat\beta_0\pm t^\star\widehat{se}(\hat\beta_0).
+$$
+For the mean response at $x$,
+$$
+\hat m(x)\pm t^\star\widehat{se}(\hat m(x)).
+$$
+
+For large degrees of freedom, the $t$ cutoff is close to the standard normal cutoff. The usual normal anchor is that about 68%, 95%, and 99.7% of a normal distribution lie within 1, 2, and 3 standard deviations of the mean. In this setting, those standard deviations are estimated standard errors.
+
+To test
+$$
+H_0:\beta_1=\beta_1^*,
+$$
+use the **standardized statistic**
+$$
+T=\frac{\hat\beta_1-\beta_1^*}{\widehat{se}(\hat\beta_1)}
+$$
+and compare $T$ to a $t_{n-2}$ distribution. For the common null $H_0:\beta_1=0$, the test asks whether the fitted slope is large relative to its estimated sampling variation under the assumed model. A small p-value is evidence against that model with a zero slope. Practical importance, model correctness, and causality require separate arguments.
+
+A **confidence interval** for $m(x)$ describes uncertainty about the mean line. A **prediction interval** describes uncertainty about a new response around that line. A future observation at $x$ has new noise in addition to the uncertainty from estimating the line, so the prediction standard error is larger:
+$$
+\widehat{se}_{pred}(x)
+=
+s\sqrt{
+1+\frac1n
+\left(
+1+\frac{(x-\bar x)^2}{s_X^2}
+\right)
+}.
+$$
+The prediction interval is
+$$
+\hat m(x)\pm t^\star\widehat{se}_{pred}(x).
+$$
+
+## Looking Forward
+
+The exact sampling results above rest on the assumptions used to produce them: linear mean function, Gaussian noise, independent observations, and equal noise variance. Diagnostics matter because violations of these assumptions change the interpretation of the intervals and tests.
+
+The next step is matrix notation. Simple linear regression can be written as
+$$
+Y=X\beta+\epsilon,
+$$
+where the first column of $X$ is all ones and the second column contains the predictor values. Multiple linear regression keeps the same structure while adding more predictor columns. The estimator, fitted values, residuals, standard errors, and $t$-style inference continue from the same logic, with matrix algebra keeping the bookkeeping manageable.

@@ -2,4 +2,20 @@
 title: "About"
 ---
 
-Binh Vu's about section. Evan love
+I am from Hanoi, spent college in Appleton, Wisconsin, and am heading to Tallahassee to start an Economics PhD at Florida State. Somewhere in that triangle I picked up an interest in applied microeconomics, political economy, housing markets, and the statistical computing needed to make empirical work less hand-wavy.
+
+Last summer, I worked as a research fellow under Prof. Andrew Sage in collaboration with [Fox Valley Data Exchange](https://www.fvdex.org/). We worked on public-health data infrastructure for the Fox Valley area: assembling indicators, thinking through missingness and interpolation, and making the output legible enough to be useful outside a statistics classroom. That work has continued into the school year as an internship in public health data.
+
+My capstone asks whether general elections distort housing transaction volumes. Using state-level monthly pending home sales from 2012 to 2025, I compare presidential and midterm cycles against non-election seasonal baselines. The broad result is suggestive: presidential elections seem to suppress pending sales before Election Day, while the expected post-election release of demand is much less obvious.
+
+Current interests:
+
+- applied microeconomics
+- political economy
+- experimental and behavioral economics
+- housing markets
+- statistical computing
+
+Want even more on my professional background?
+
+[Download my CV](assets/pdf/binh-vu-cv.pdf){.btn .btn-outline-primary}

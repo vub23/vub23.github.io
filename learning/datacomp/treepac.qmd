@@ -1,0 +1,12 @@
+---
+title: "`treepac` R Package"
+---
+
+`treepac` is a small R package built for Stat 405. It collects a few utilities meant to reduce repetitive exploratory-data-analysis work: a log-log regression helper, a percentage-change helper, and a custom ggplot theme.
+
+### Package Site
+
+- [Package website](https://adc-405-s26.github.io/treepac/index.html)
+- [Reference documentation](https://adc-405-s26.github.io/treepac/reference/index.html)
+
+The package website is built with pkgdown and is the right public home for the package documentation. This page exists to keep the work visible inside the course archive without duplicating the package site.

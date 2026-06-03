@@ -1,6 +1,24 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - assets/**
+  render:
+    - index.qmd
+    - about.qmd
+    - things.qmd
+    - projects/index.qmd
+    - learning/index.qmd
+    - learning/numana/index.qmd
+    - learning/numana/notebooks/*.ipynb
+    - learning/regress/index.qmd
+    - learning/regress/slr.qmd
+    - learning/datacomp/index.qmd
+    - learning/datacomp/sql/index.qmd
+    - learning/datacomp/text-analysis/index.qmd
+    - learning/datacomp/tidycensus.qmd
+    - learning/datacomp/treepac.qmd
+    - learning/datacomp/two-cultures.qmd
 
 website:
   title: "Binh Vu"
@@ -14,6 +32,10 @@ website:
         text: Projects
       - href: learning/index.qmd
         text: Learning
+    right:
+      - icon: github
+        href: https://github.com/vub23/vub23.github.io
+        aria-label: GitHub repository
 
   sidebar:
     - id: learning
@@ -24,21 +46,32 @@ website:
         - section: "Numerical Analysis"
           href: learning/numana/index.qmd
           contents:
-            - learning/numana/w1.qmd
-            - learning/numana/w2.qmd
-            - learning/numana/w3.qmd
+            - text: "Chapter 2"
+              href: learning/numana/notebooks/chapter-2.ipynb
+            - text: "Chapter 3"
+              href: learning/numana/notebooks/chapter-3.ipynb
+            - text: "Chapter 4"
+              href: learning/numana/notebooks/chapter-4.ipynb
+            - text: "Chapter 5"
+              href: learning/numana/notebooks/chapter-5.ipynb
+            - text: "Chapter 6"
+              href: learning/numana/notebooks/chapter-6.ipynb
+            - text: "Chapter 7"
+              href: learning/numana/notebooks/chapter-7.ipynb
+            - text: "Chapters 10 and 11"
+              href: learning/numana/notebooks/chapters-10-11.ipynb
         - section: "Regression Analysis"
           href: learning/regress/index.qmd
           contents:
-            - learning/regress/w1.qmd
-            - learning/regress/w2.qmd
-            - learning/regress/w3.qmd
+            - learning/regress/slr.qmd
         - section: "Adv. Data Computing"
           href: learning/datacomp/index.qmd
           contents:
-            - learning/datacomp/w1.qmd
-            - learning/datacomp/w2.qmd
-            - learning/datacomp/w3.qmd
+            - learning/datacomp/sql/index.qmd
+            - learning/datacomp/text-analysis/index.qmd
+            - learning/datacomp/tidycensus.qmd
+            - learning/datacomp/treepac.qmd
+            - learning/datacomp/two-cultures.qmd
 
 format:
   html:
@@ -49,4 +82,3 @@ format:
     filters:
       - quarto-ext/fontawesome
     toc: true
-

@@ -2,5 +2,46 @@
 title: Stat 405 - Advanced Data Computing
 ---
 
-Taught by the great Abhishek Chakraborty. This file will be updated with links to projects, classwork, presentations and more. Maybe not to the point of a personal portfolio, but close enough to matter.
+Taught by Abhishek Chakraborty. This section collects the main Stat 405 work that belongs on the portfolio site.
 
+::: {.card-grid}
+::: {.site-card}
+### SQL Project
+
+Database design and SQL analysis using TidyTuesday probability-language survey data.
+
+[Open project](sql/index.qmd)
+:::
+
+::: {.site-card}
+### Text Analysis
+
+Sentiment and token analysis of Billboard Hot 100 lyrics across time.
+
+[Open project](text-analysis/index.qmd)
+:::
+
+::: {.site-card}
+### Tidycensus Presentation
+
+RPubs/reveal presentation on using `tidycensus` as a practical interface to Census data.
+
+[Open links](tidycensus.qmd)
+:::
+
+::: {.site-card}
+### `treepac` R Package
+
+A small package with EDA helpers and a ggplot theme.
+
+[Open links](treepac.qmd)
+:::
+
+::: {.site-card}
+### Two Cultures Poster
+
+Poster and paper response on Breiman's "Statistical Modeling: The Two Cultures."
+
+[Open poster page](two-cultures.qmd)
+:::
+:::

@@ -2,8 +2,30 @@
 title: "Learning"
 ---
 
-This page collects the classes and course work currently linked from the site.
+This page collects coursework, class projects, and notes.
 
-- [Regression Analysis](regress.qmd)
-- [Advanced Data Computing](datacomp.qmd)
-- [Numerical Analysis](numana.qmd)
+::: {.card-grid}
+::: {.site-card}
+### Advanced Data Computing
+
+Stat 405 project pages, including SQL, text analysis, package/presentation work, and the Breiman poster project.
+
+[Open Stat 405](datacomp/index.qmd)
+:::
+
+::: {.site-card}
+### Numerical Analysis
+
+Jupyter notebooks from Math 420, organized as a loose archive.
+
+[Open Numerical Analysis](numana/index.qmd)
+:::
+
+::: {.site-card}
+### Regression Analysis
+
+Regression material before moving into multiple regression.
+
+[Open Regression](regress/index.qmd)
+:::
+:::

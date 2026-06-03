@@ -1,6 +1,42 @@
 ---
 title: Math 420 - Numerical Analysis
 ---
-Semi official document for Numerical Analysis, taught by the ever-calm Joe Gregg. Not sure how much I'll actually use this file, given they are Jupyter.
 
-If the need overtakes me, will maybe do some scribing.
+Numerical Analysis was mostly done in Jupyter notebooks, so this section is a loose archive rather than a polished narrative. The notebooks are kept close to their original homework form.
+
+::: {.card-grid}
+::: {.site-card}
+### Chapter 2
+[Open notebook](notebooks/chapter-2.ipynb)
+:::
+
+::: {.site-card}
+### Chapter 3
+[Open notebook](notebooks/chapter-3.ipynb)
+:::
+
+::: {.site-card}
+### Chapter 4
+[Open notebook](notebooks/chapter-4.ipynb)
+:::
+
+::: {.site-card}
+### Chapter 5
+[Open notebook](notebooks/chapter-5.ipynb)
+:::
+
+::: {.site-card}
+### Chapter 6
+[Open notebook](notebooks/chapter-6.ipynb)
+:::
+
+::: {.site-card}
+### Chapter 7
+[Open notebook](notebooks/chapter-7.ipynb)
+:::
+
+::: {.site-card}
+### Chapters 10 and 11
+[Open notebook](notebooks/chapters-10-11.ipynb)
+:::
+:::

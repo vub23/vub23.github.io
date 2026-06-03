@@ -1,0 +1,9 @@
+---
+title: "Tidycensus Presentation"
+---
+
+This presentation introduces `tidycensus` as a practical interface to Census and American Community Survey data. The point was to show why the package is a useful bridge between the Census API and ordinary R workflows: less manual downloading, cleaner data frames, and easier joins with geography.
+
+### Presentation Link
+
+- [RPubs presentation](https://rpubs.com/vub23/1427206)

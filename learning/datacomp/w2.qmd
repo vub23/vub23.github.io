@@ -1,5 +1,0 @@
----
-title: "Week 2"
----
-
-Dummy content for Adv. Data Computing Week 2.

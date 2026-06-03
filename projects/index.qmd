@@ -1,5 +1,15 @@
 ---
-title: "Projects"
+title: "General Elections and Housing Transaction Volumes"
 ---
 
-A few things I've worked on.
+Over Winter term this year, I worked on my dual-major capstone under the guidance of Professors Jonathan Lhost, Andrew Sage, and Abhishek Chakraborty.
+
+I study whether general elections generate measurable distortions in state-level housing transaction volumes. The paper uses monthly pending home sales from 2012 to 2025 and compares presidential and midterm election cycles against non-election seasonal baselines.
+
+The main result is cautious, but interesting enough to keep me thinking: presidential cycles show a pre-election dip in pending sales, while midterms do not show a comparable pattern. The expected post-election jump is nowhere to be found. That made the project a useful lesson in the distance between a clean theory and the actual shape of data once timing, seasonality, and inference all get involved.
+
+The paper also clarified what I want more training in. I can build a defensible observational design and explain the pattern it finds; pinning down the mechanism more convincingly is exactly the sort of thing that asks for better theory, cleaner identification, or both.
+
+[Download the capstone PDF](../assets/pdf/capstone.pdf){.btn .btn-outline-primary}
+
+<iframe class="pdf-frame" src="../assets/pdf/capstone.pdf" title="Capstone PDF"></iframe>

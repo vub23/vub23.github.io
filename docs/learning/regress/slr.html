@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Simple Linear Regression Before MLR – Binh Vu</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-43081d808c96cc46af55a3a816ae9eed.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Binh Vu</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../things.html"> 
+<span class="menu-text">Things</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../learning/index.html" aria-current="page"> 
+<span class="menu-text">Learning</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vub23/vub23.github.io"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../learning/regress/index.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="../../learning/regress/slr.html">Simple Linear Regression Before MLR</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Learning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../learning/numana/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/numana/notebooks/chapter-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/numana/notebooks/chapter-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/numana/notebooks/chapter-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/numana/notebooks/chapter-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/numana/notebooks/chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/numana/notebooks/chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapter 7</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/numana/notebooks/chapters-10-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chapters 10 and 11</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../learning/regress/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/regress/slr.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Simple Linear Regression Before MLR</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../learning/datacomp/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adv. Data Computing</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/datacomp/sql/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SQL Project: Probability Language</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/datacomp/text-analysis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lyrical Trends of the Billboard Hot 100 Over Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/datacomp/tidycensus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tidycensus Presentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/datacomp/treepac.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>treepac</code> R Package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../learning/datacomp/two-cultures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poster: Statistical Modeling, The Two Cultures</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#modeling-a-relationship" id="toc-modeling-a-relationship" class="nav-link active" data-scroll-target="#modeling-a-relationship">Modeling a Relationship</a></li>
+  <li><a href="#point-estimation" id="toc-point-estimation" class="nav-link" data-scroll-target="#point-estimation">Point Estimation</a></li>
+  <li><a href="#arithmetic-and-decompositions" id="toc-arithmetic-and-decompositions" class="nav-link" data-scroll-target="#arithmetic-and-decompositions">Arithmetic and Decompositions</a></li>
+  <li><a href="#residuals-and-estimating-noise" id="toc-residuals-and-estimating-noise" class="nav-link" data-scroll-target="#residuals-and-estimating-noise">Residuals and Estimating Noise</a></li>
+  <li><a href="#adding-gaussian-noise" id="toc-adding-gaussian-noise" class="nav-link" data-scroll-target="#adding-gaussian-noise">Adding Gaussian Noise</a></li>
+  <li><a href="#confidence-intervals-tests-and-prediction" id="toc-confidence-intervals-tests-and-prediction" class="nav-link" data-scroll-target="#confidence-intervals-tests-and-prediction">Confidence Intervals, Tests, and Prediction</a></li>
+  <li><a href="#looking-forward" id="toc-looking-forward" class="nav-link" data-scroll-target="#looking-forward">Looking Forward</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../learning/regress/index.html">Regression Analysis</a></li><li class="breadcrumb-item"><a href="../../learning/regress/slr.html">Simple Linear Regression Before MLR</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Simple Linear Regression Before MLR</h1>
+<p class="subtitle lead">Estimation, noise, and exact sampling results</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="modeling-a-relationship" class="level2">
+<h2 class="anchored" data-anchor-id="modeling-a-relationship">Modeling a Relationship</h2>
+<p>In a regression problem, we usually begin with a question about a relationship. We have a response variable, a predictor, and a proposed functional form for how the average response changes with the predictor. In simple linear regression, the chosen form is a line: <span class="math display">\[
+m(x)=\beta_0+\beta_1x.
+\]</span> The <strong>parameters</strong> <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are fixed but unknown once the model is chosen. The data do not make the parameters random; the data give us a way to estimate them.</p>
+<p>The model for the response is <span class="math display">\[
+Y_i=\beta_0+\beta_1x_i+\epsilon_i,\qquad i=1,\ldots,n.
+\]</span> The observed predictor values <span class="math inline">\(x_1,\ldots,x_n\)</span> are treated as fixed numbers in the derivations. The response <span class="math inline">\(Y_i\)</span> is capitalized because it is a <strong>random variable</strong> before observation. After observing the data, its realized value is <span class="math inline">\(y_i\)</span>. Some course materials write the predictors as <span class="math inline">\(X_i\)</span>; the algebra below is the fixed-<span class="math inline">\(x\)</span> version of the same calculations.</p>
+<p>The term <span class="math inline">\(\epsilon_i\)</span> is the <strong>noise term</strong>: <span class="math display">\[
+\epsilon_i=Y_i-(\beta_0+\beta_1x_i).
+\]</span> It is the part of the response not explained by the line. At first, assume <span class="math display">\[
+E[\epsilon_i]=0,\qquad \operatorname{Var}(\epsilon_i)=\sigma^2,
+\]</span> and assume the <span class="math inline">\(\epsilon_i\)</span> are uncorrelated across observations. The parameter <span class="math inline">\(\sigma^2\)</span> is the noise variance around the line, and it is also fixed but unknown.</p>
+<p>A <strong>sample</strong> is one realized set of observations. An <strong>estimator</strong> is a rule computed from random data, so it is random before the data are observed. An <strong>estimate</strong> is the realized value of that rule after one sample is observed. Hats mark estimators and estimates: <span class="math display">\[
+\hat\beta_0,\qquad \hat\beta_1,\qquad \hat\sigma^2.
+\]</span> The fitted mean at a point <span class="math inline">\(x\)</span> is <span class="math display">\[
+\hat m(x)=\hat\beta_0+\hat\beta_1x,
+\]</span> which estimates <span class="math inline">\(m(x)=\beta_0+\beta_1x\)</span>.</p>
+<p>The main mathematical device is repeated sampling. We may not be able to rerun the study many times, but the model lets us ask what would happen to <span class="math inline">\(\hat\beta_0\)</span>, <span class="math inline">\(\hat\beta_1\)</span>, and <span class="math inline">\(\hat m(x)\)</span> across repeated samples with the same <span class="math inline">\(x_i\)</span> values. The distribution of an estimator over those hypothetical repetitions is its <strong>sampling distribution</strong>. Moments of that distribution tell us whether the estimator is centered near its target and how much it varies; the full distribution supports confidence intervals, tests, and prediction intervals.</p>
+</section>
+<section id="point-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="point-estimation">Point Estimation</h2>
+<p>Define <span class="math display">\[
+\bar x=\frac1n\sum_{i=1}^n x_i,\qquad
+\bar Y=\frac1n\sum_{i=1}^n Y_i,
+\]</span> <span class="math display">\[
+s_X^2=\frac1n\sum_{i=1}^n (x_i-\bar x)^2,\qquad
+c_{XY}=\frac1n\sum_{i=1}^n (x_i-\bar x)(Y_i-\bar Y).
+\]</span> The usual least-squares estimates are <span class="math display">\[
+\hat\beta_1=\frac{c_{XY}}{s_X^2},\qquad
+\hat\beta_0=\bar Y-\hat\beta_1\bar x.
+\]</span></p>
+<p>These formulas can be reached in two ways before adding Gaussian noise. The plug-in route starts from the optimal linear predictor, whose population slope is <span class="math inline">\(\operatorname{Cov}(X,Y)/\operatorname{Var}(X)\)</span>, and replaces population quantities with sample quantities. The least-squares route chooses <span class="math inline">\(b_0,b_1\)</span> to minimize <span class="math display">\[
+\frac1n\sum_{i=1}^n\{Y_i-(b_0+b_1x_i)\}^2.
+\]</span> Taking derivatives gives the normal equations, and solving those equations gives the same <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat\beta_1\)</span>.</p>
+<p>For large samples, we want estimates that move toward the true parameter values. <strong>Consistency</strong> means an estimator converges to its target as <span class="math inline">\(n\)</span> grows. <strong>Bias</strong> and <strong>standard error</strong> describe finite-sample behavior: <span class="math display">\[
+\operatorname{Bias}(\hat\theta)=E[\hat\theta]-\theta,\qquad
+\operatorname{se}(\hat\theta)=\sqrt{\operatorname{Var}(\hat\theta)}.
+\]</span> Bias records whether the estimator is centered at the target. Standard error records its typical sampling variation.</p>
+</section>
+<section id="arithmetic-and-decompositions" class="level2">
+<h2 class="anchored" data-anchor-id="arithmetic-and-decompositions">Arithmetic and Decompositions</h2>
+<p>Let <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> be constants, and let <span class="math inline">\(U\)</span> be a random variable. Then <span class="math display">\[
+E[a+bU]=a+bE[U],
+\qquad
+\operatorname{Var}(a+bU)=b^2\operatorname{Var}(U).
+\]</span> Constants shift expectation, not variance; multiplying a random variable by <span class="math inline">\(b\)</span> multiplies its variance by <span class="math inline">\(b^2\)</span>. If <span class="math inline">\(V_1,\ldots,V_n\)</span> are uncorrelated random variables and <span class="math inline">\(a_1,\ldots,a_n\)</span> are constants, then <span class="math display">\[
+\operatorname{Var}\left(\sum_{i=1}^n a_iV_i\right)
+=\sum_{i=1}^n a_i^2\operatorname{Var}(V_i).
+\]</span></p>
+<p>Start with <span class="math display">\[
+\hat\beta_1
+=\frac{c_{XY}}{s_X^2}
+=\frac{\frac1n\sum_{i=1}^n(x_i-\bar x)(Y_i-\bar Y)}{s_X^2}.
+\]</span> Because <span class="math inline">\(\sum_i(x_i-\bar x)=0\)</span>, <span class="math display">\[
+\frac1n\sum_{i=1}^n(x_i-\bar x)\bar Y=0,
+\]</span> so <span class="math display">\[
+\hat\beta_1
+=\frac{\frac1n\sum_{i=1}^n(x_i-\bar x)Y_i}{s_X^2}.
+\]</span> Substitute <span class="math inline">\(Y_i=\beta_0+\beta_1x_i+\epsilon_i\)</span>: <span class="math display">\[
+\hat\beta_1
+=\frac{\frac1n\sum_i(x_i-\bar x)(\beta_0+\beta_1x_i+\epsilon_i)}{s_X^2}.
+\]</span> Split the sum: <span class="math display">\[
+\hat\beta_1
+=
+\frac{
+\beta_0\frac1n\sum_i(x_i-\bar x)
++\beta_1\frac1n\sum_i(x_i-\bar x)x_i
++\frac1n\sum_i(x_i-\bar x)\epsilon_i
+}{s_X^2}.
+\]</span> The first term is zero. For the second term, <span class="math display">\[
+\frac1n\sum_i(x_i-\bar x)x_i
+=\frac1n\sum_i(x_i-\bar x)\{(x_i-\bar x)+\bar x\}
+=s_X^2.
+\]</span></p>
+<p><strong>Key result.</strong> The slope estimator can be written as the true slope plus a sum of noise terms: <span class="math display">\[
+\hat\beta_1
+=
+\beta_1
++
+\sum_{j=1}^n
+\frac{x_j-\bar x}{n s_X^2}\epsilon_j.
+\]</span> This is the main calculation. Once <span class="math inline">\(\hat\beta_1\)</span> is written this way, its expectation and variance follow from the rules above: <span class="math display">\[
+E[\hat\beta_1]
+=\beta_1+
+\sum_{j=1}^n
+\frac{x_j-\bar x}{n s_X^2}E[\epsilon_j]
+=\beta_1,
+\]</span> so <span class="math inline">\(\hat\beta_1\)</span> is centered at the target under the basic SLR assumptions. Similarly, <span class="math display">\[
+\operatorname{Var}(\hat\beta_1)
+=
+\sum_{j=1}^n
+\left(\frac{x_j-\bar x}{n s_X^2}\right)^2\sigma^2
+=
+\frac{\sigma^2}{n s_X^2}.
+\]</span> Thus <span class="math display">\[
+\operatorname{se}(\hat\beta_1)=\frac{\sigma}{\sqrt{n s_X^2}}.
+\]</span></p>
+<p>The same decomposition strategy gives the intercept and fitted mean.</p>
+<p><strong>Key result.</strong> <span class="math display">\[
+\hat\beta_0
+=
+\beta_0
++
+\sum_{j=1}^n
+\left(
+\frac1n
+-
+\frac{\bar x(x_j-\bar x)}{n s_X^2}
+\right)\epsilon_j.
+\]</span></p>
+<p><strong>Key result.</strong> <span class="math display">\[
+\hat m(x)
+=
+m(x)
++
+\sum_{j=1}^n
+\left(
+\frac1n
++
+\frac{(x-\bar x)(x_j-\bar x)}{n s_X^2}
+\right)\epsilon_j.
+\]</span> From these, <span class="math display">\[
+E[\hat\beta_0]=\beta_0,\qquad
+\operatorname{Var}(\hat\beta_0)
+=\frac{\sigma^2}{n}\left(1+\frac{\bar x^2}{s_X^2}\right),
+\]</span> and <span class="math display">\[
+E[\hat m(x)]=m(x),
+\qquad
+\operatorname{Var}(\hat m(x))
+=
+\frac{\sigma^2}{n}
+\left(
+1+\frac{(x-\bar x)^2}{s_X^2}
+\right).
+\]</span> The variance of <span class="math inline">\(\hat m(x)\)</span> separates uncertainty about the level of the fitted line from uncertainty about the slope used away from <span class="math inline">\(\bar x\)</span>.</p>
+</section>
+<section id="residuals-and-estimating-noise" class="level2">
+<h2 class="anchored" data-anchor-id="residuals-and-estimating-noise">Residuals and Estimating Noise</h2>
+<p>The model noise <span class="math inline">\(\epsilon_i\)</span> uses the true line, so it is not observed. The <strong>residual</strong> uses the fitted line: <span class="math display">\[
+e_i=Y_i-\hat m(x_i)=Y_i-(\hat\beta_0+\hat\beta_1x_i).
+\]</span> After observing the data, the realized residual is <span class="math inline">\(y_i-\hat m(x_i)\)</span>. Residuals are functions of the whole fitted model. They are related to the original noise terms, but they are not the same objects and they do not behave like independent copies of <span class="math inline">\(\epsilon_i\)</span>.</p>
+<p>The sum of squared errors is <span class="math display">\[
+SSE=\sum_{i=1}^n e_i^2.
+\]</span> Under the fitted SLR model, the residuals satisfy two fitting constraints: they sum to zero and they are uncorrelated with the fitted predictor direction. Estimating two coefficients leaves <span class="math inline">\(n-2\)</span> residual degrees of freedom.</p>
+<p>The maximum-likelihood estimate of <span class="math inline">\(\sigma^2\)</span> under Gaussian noise is <span class="math display">\[
+\hat\sigma^2=\frac{SSE}{n}.
+\]</span> But this estimator is biased downward: <span class="math display">\[
+E[\hat\sigma^2]=\frac{n-2}{n}\sigma^2.
+\]</span> The corrected estimate used for standard errors is therefore <span class="math display">\[
+s^2=\frac{SSE}{n-2}.
+\]</span></p>
+</section>
+<section id="adding-gaussian-noise" class="level2">
+<h2 class="anchored" data-anchor-id="adding-gaussian-noise">Adding Gaussian Noise</h2>
+<p>The <strong>Gaussian noise model</strong> adds <span class="math display">\[
+\epsilon_i \overset{ind}{\sim} N(0,\sigma^2).
+\]</span> For fixed <span class="math inline">\(x_i\)</span>, adding <span class="math inline">\(\beta_0+\beta_1x_i\)</span> shifts the mean and leaves the variance unchanged: <span class="math display">\[
+Y_i \sim N(\beta_0+\beta_1x_i,\sigma^2).
+\]</span> Independence of the <span class="math inline">\(\epsilon_i\)</span> gives independence of the corresponding <span class="math inline">\(Y_i\)</span> values.</p>
+<p>Under the basic SLR assumptions, the decompositions above gave means and variances. Under Gaussian noise, they give exact sampling distributions, because linear combinations of independent Gaussian random variables are Gaussian.</p>
+<p><strong>Key result.</strong> <span class="math display">\[
+\hat\beta_1
+\sim
+N\left(
+\beta_1,
+\frac{\sigma^2}{n s_X^2}
+\right).
+\]</span> Similarly, <span class="math display">\[
+\hat\beta_0
+\sim
+N\left(
+\beta_0,
+\frac{\sigma^2}{n}\left(1+\frac{\bar x^2}{s_X^2}\right)
+\right),
+\]</span> and <span class="math display">\[
+\hat m(x)
+\sim
+N\left(
+m(x),
+\frac{\sigma^2}{n}
+\left(
+1+\frac{(x-\bar x)^2}{s_X^2}
+\right)
+\right).
+\]</span></p>
+<p>If <span class="math inline">\(\sigma\)</span> were known, the slope could be standardized as <span class="math display">\[
+\frac{\hat\beta_1-\beta_1}{\sigma/\sqrt{n s_X^2}}
+\sim N(0,1).
+\]</span> In practice <span class="math inline">\(\sigma\)</span> is unknown, so it is estimated from residuals. Under Gaussian noise, <span class="math display">\[
+\frac{SSE}{\sigma^2}
+=
+\frac{(n-2)s^2}{\sigma^2}
+\sim
+\chi^2_{n-2}.
+\]</span> The chi-square distribution appears because, after the fitted line is accounted for, the residual sum of squares is a sum of squared Gaussian pieces.</p>
+<p>Replacing <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span> changes the standardized normal statistic into a <span class="math inline">\(t\)</span> statistic: <span class="math display">\[
+\frac{\hat\beta_1-\beta_1}{\widehat{se}(\hat\beta_1)}
+\sim
+t_{n-2},
+\]</span> where <span class="math display">\[
+\widehat{se}(\hat\beta_1)=\frac{s}{\sqrt{n s_X^2}}.
+\]</span> The same pattern applies to <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat m(x)\)</span> with their own estimated standard errors: <span class="math display">\[
+\widehat{se}(\hat\beta_0)
+=
+\frac{s}{\sqrt n}
+\sqrt{1+\frac{\bar x^2}{s_X^2}},
+\]</span> <span class="math display">\[
+\widehat{se}(\hat m(x))
+=
+\frac{s}{\sqrt n}
+\sqrt{1+\frac{(x-\bar x)^2}{s_X^2}}.
+\]</span> The <span class="math inline">\(t\)</span> distribution accounts for estimating <span class="math inline">\(\sigma\)</span>. As the degrees of freedom grow, the <span class="math inline">\(t\)</span> distribution approaches the standard normal distribution.</p>
+<p>Under the Gaussian model, maximum likelihood gives the same <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat\beta_1\)</span> as least squares. Maximizing the Gaussian log-likelihood over the line parameters is equivalent to minimizing <span class="math inline">\(SSE\)</span>.</p>
+</section>
+<section id="confidence-intervals-tests-and-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-intervals-tests-and-prediction">Confidence Intervals, Tests, and Prediction</h2>
+<p>The previous section gives reference distributions that no longer contain the unknown parameters in the same unusable way. That is what makes exact inference possible under the Gaussian assumptions.</p>
+<p>Let <span class="math inline">\(t^\star\)</span> be the two-sided cutoff from a <span class="math inline">\(t_{n-2}\)</span> distribution for the desired confidence level. For example, for a 95% interval, <span class="math inline">\(t^\star\)</span> is the value leaving 2.5% in each tail.</p>
+<p>The confidence interval template is <span class="math display">\[
+\text{estimate} \pm t^\star \times \text{estimated standard error}.
+\]</span> For the slope, <span class="math display">\[
+\hat\beta_1\pm t^\star\widehat{se}(\hat\beta_1).
+\]</span> For the intercept, <span class="math display">\[
+\hat\beta_0\pm t^\star\widehat{se}(\hat\beta_0).
+\]</span> For the mean response at <span class="math inline">\(x\)</span>, <span class="math display">\[
+\hat m(x)\pm t^\star\widehat{se}(\hat m(x)).
+\]</span></p>
+<p>For large degrees of freedom, the <span class="math inline">\(t\)</span> cutoff is close to the standard normal cutoff. The usual normal anchor is that about 68%, 95%, and 99.7% of a normal distribution lie within 1, 2, and 3 standard deviations of the mean. In this setting, those standard deviations are estimated standard errors.</p>
+<p>To test <span class="math display">\[
+H_0:\beta_1=\beta_1^*,
+\]</span> use the <strong>standardized statistic</strong> <span class="math display">\[
+T=\frac{\hat\beta_1-\beta_1^*}{\widehat{se}(\hat\beta_1)}
+\]</span> and compare <span class="math inline">\(T\)</span> to a <span class="math inline">\(t_{n-2}\)</span> distribution. For the common null <span class="math inline">\(H_0:\beta_1=0\)</span>, the test asks whether the fitted slope is large relative to its estimated sampling variation under the assumed model. A small p-value is evidence against that model with a zero slope. Practical importance, model correctness, and causality require separate arguments.</p>
+<p>A <strong>confidence interval</strong> for <span class="math inline">\(m(x)\)</span> describes uncertainty about the mean line. A <strong>prediction interval</strong> describes uncertainty about a new response around that line. A future observation at <span class="math inline">\(x\)</span> has new noise in addition to the uncertainty from estimating the line, so the prediction standard error is larger: <span class="math display">\[
+\widehat{se}_{pred}(x)
+=
+s\sqrt{
+1+\frac1n
+\left(
+1+\frac{(x-\bar x)^2}{s_X^2}
+\right)
+}.
+\]</span> The prediction interval is <span class="math display">\[
+\hat m(x)\pm t^\star\widehat{se}_{pred}(x).
+\]</span></p>
+</section>
+<section id="looking-forward" class="level2">
+<h2 class="anchored" data-anchor-id="looking-forward">Looking Forward</h2>
+<p>The exact sampling results above rest on the assumptions used to produce them: linear mean function, Gaussian noise, independent observations, and equal noise variance. Diagnostics matter because violations of these assumptions change the interpretation of the intervals and tests.</p>
+<p>The next step is matrix notation. Simple linear regression can be written as <span class="math display">\[
+Y=X\beta+\epsilon,
+\]</span> where the first column of <span class="math inline">\(X\)</span> is all ones and the second column contains the predictor values. Multiple linear regression keeps the same structure while adding more predictor columns. The estimator, fitted values, residuals, standard errors, and <span class="math inline">\(t\)</span>-style inference continue from the same logic, with matrix algebra keeping the bookkeeping manageable.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

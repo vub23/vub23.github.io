@@ -1,0 +1,15 @@
+---
+title: "Poster: Statistical Modeling, The Two Cultures"
+---
+
+For this project, me and Evan Toth tried to recap Leo Breiman's 2001 paper, "Statistical Modeling: The Two Cultures," and translate the main arguments into a poster. The poster contrasts data modeling and algorithmic modeling, then frames the practical takeaway as a problem-first approach to statistical work.
+
+The central idea is not that black-box models are automatically better. It is that different goals demand different modeling cultures. Prediction, inference, causality, and interpretability do not always want the same tool.
+
+
+## Artifacts
+
+- [Printed poster PDF](../../assets/pdf/stat405-two-cultures-poster.pdf)
+- [Paper PDF](../../assets/pdf/stat405-two-cultures-paper.pdf)
+
+<iframe class="pdf-frame compact" src="../../assets/pdf/stat405-two-cultures-poster.pdf" title="Two Cultures poster PDF"></iframe>

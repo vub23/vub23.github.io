@@ -1,5 +1,0 @@
----
-title: "Week 2"
----
-
-Dummy content for Numerical Analysis Week 2.
