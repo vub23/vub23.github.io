@@ -4,7 +4,7 @@
     "href": "learning/datacomp/two-cultures.html",
     "title": "Poster: Statistical Modeling, The Two Cultures",
     "section": "",
-    "text": "For this project, me and Evan Toth tried to recap Leo Breiman’s 2001 paper, “Statistical Modeling: The Two Cultures,” and translate the main arguments into a poster. The poster contrasts data modeling and algorithmic modeling, then frames the practical takeaway as a problem-first approach to statistical work.\nThe central idea is not that black-box models are automatically better. It is that different goals demand different modeling cultures. Prediction, inference, causality, and interpretability do not always want the same tool.",
+    "text": "For this project, me and Evan Toth (the best!) tried to recap Leo Breiman’s 2001 paper, “Statistical Modeling: The Two Cultures,” and translate the main arguments into a poster. The poster contrasts data modeling and algorithmic modeling, then frames the practical takeaway as a problem-first approach to statistical work.\nThe central idea is not that black-box models are automatically better. It is that different goals demand different modeling cultures. Prediction, inference, causality, and interpretability do not always want the same tool.",
     "crumbs": [
       "Learning",
       "Adv. Data Computing",
@@ -565,7 +565,7 @@
     "href": "things.html",
     "title": "Things",
     "section": "",
-    "text": "Things I like:\n\nCoffee\nGlobalization & Free markets\nThat one part in Nimrodel\nMarc-Andre Hamelin\nBTN Overhead Press\nQuarto (esp. labels)\n\nThings I dislike:\n\nMy evil twin Bihn"
+    "text": "Things I like:\n\nCoffee (if we are to meet in person, let me know if you’d want some!)\nGlobalization & Free markets\nThat one part in Nimrodel\nMarc-Andre Hamelin\nBehind-the-neck Overhead Presses\nQuarto (especially its Python integration and the labels feature)\n\nThings I dislike:\n\nMy evil twin Bihn (please don’t spell my name wrong!)"
   },
   {
     "objectID": "projects/capstone.html",

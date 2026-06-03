@@ -4,13 +4,13 @@ title: "Things"
 
 Things I like:
 
-- Coffee
+- Coffee (if we are to meet in person, let me know if you'd want some!)
 - Globalization & Free markets
 - That one part in [Nimrodel](https://youtu.be/NYC3BWroCsU?si=bkSEZQDHGjRUHzHk&t=420)
 - [Marc-Andre Hamelin](https://youtu.be/u3-WbNcsfuk?si=u_Ls0Y7RWc1sN38n&t=920)
-- BTN Overhead Press
-- Quarto (esp. labels)
+- Behind-the-neck Overhead Presses
+- Quarto (especially its Python integration and the labels feature)
 
 Things I dislike:
 
-- My evil twin Bihn
+- My evil twin Bihn (please don't spell my name wrong!)
